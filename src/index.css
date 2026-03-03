@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --neon-green: #00FF00;
+  --brutal-black: #000000;
+  --gallery-white: #FFFFFF;
+}
+
+body {
+  @apply bg-[#0a0a0a] text-white font-sans antialiased;
+}
+
+.brutal-border {
+  @apply border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)];
+}
+
+.brutal-btn {
+  @apply px-4 py-2 bg-white text-black font-bold uppercase tracking-wider transition-all hover:bg-[#00FF00] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
