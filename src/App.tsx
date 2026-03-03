@@ -8,8 +8,17 @@ import { Search, Gamepad2, X, Maximize2, Trophy, Flame } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import gamesData from './data/games.json';
 
+interface Game {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  thumbnail: string;
+  iframeUrl: string;
+}
+
 export default function App() {
-  const [selectedGame, setSelectedGame] = useState(null);
+  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -195,7 +204,7 @@ export default function App() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => {
-                      const iframe = document.getElementById('game-iframe');
+                      const iframe = document.getElementById('game-iframe') as HTMLIFrameElement;
                       if (iframe?.requestFullscreen) iframe.requestFullscreen();
                     }}
                     className="p-2 hover:bg-white/10 transition-colors"
